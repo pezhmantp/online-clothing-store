@@ -1,0 +1,18 @@
+package com.online_store.online_store.dtos;
+
+import jakarta.persistence.Column;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ClothesDto {
+    private String clothesType;
+    private String brand;
+    private String material;
+    private Long price;
+    private String color;
+    private String gender;
+}
