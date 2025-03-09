@@ -1,0 +1,13 @@
+.navbar{
+    padding: 5px;
+    background-color: rgb(144, 0, 127);
+    width: 99%;
+    height: 40px;
+    display: flex;
+    justify-content:space-between;
+    border-radius: 8px;
+}
+.logo{
+    width: 120px;
+    height: 80px;
+}
