@@ -7,13 +7,16 @@ import Home from './components/home/Home';
 
 function App() {
   return (
-    <BrowserRouter>
-        <Navbar />
-        <img src={banner} className='banner'/>
-      <Routes>
-        <Route index element={<Home />} />
-    </Routes>
-    </BrowserRouter>
+    <div>
+      app
+    </div>
+    // <BrowserRouter>
+    //     <Navbar />
+    //     <img src={banner} className='banner'/>
+    //   <Routes>
+    //     <Route index element={<Home />} />
+    // </Routes>
+    // </BrowserRouter>
   );
 }
 

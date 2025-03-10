@@ -10,7 +10,7 @@ function Navbar() {
         <img src={logo} className='logo'/>
             <div>
             <Button id='home' startIcon={<HomeIcon style={{color:"white",fontSize:"28px"}} id='homeIcon' />}/>
-            <Button  id='userPanel' startIcon={<AccountCircleIcon style={{color:"white",fontSize:"28px"}} id="userPanelIcon" />}/>
+            <Button id='userPanel' startIcon={<AccountCircleIcon style={{color:"white",fontSize:"28px"}} id="userPanelIcon" />}/>
             
             </div>
     </div>
