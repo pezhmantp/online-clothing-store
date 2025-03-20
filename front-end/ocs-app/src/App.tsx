@@ -10,13 +10,6 @@ function App() {
     <div>
       app
     </div>
-    // <BrowserRouter>
-    //     <Navbar />
-    //     <img src={banner} className='banner'/>
-    //   <Routes>
-    //     <Route index element={<Home />} />
-    // </Routes>
-    // </BrowserRouter>
   );
 }
 

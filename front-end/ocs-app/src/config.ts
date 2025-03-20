@@ -10,6 +10,6 @@ export const userManager = new UserManager({
 });
 
 export const onSigninCallback = () => {    
- window.history.replaceState({}, document.title, "/");
+ window.history.replaceState({}, document.title, "/managerPanel");
   window.location.href=window.location.origin + window.location.pathname;
 };
