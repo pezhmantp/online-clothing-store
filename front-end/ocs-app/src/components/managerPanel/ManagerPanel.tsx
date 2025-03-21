@@ -2,6 +2,7 @@ import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Box, Tab } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { hasAuthParams, useAuth } from "react-oidc-context";
+import AddNewClothes from '../addNewClothes/AddNewClothes';
 
 function ManagerPanel() {
     const auth = useAuth();
@@ -30,7 +31,7 @@ useEffect(() => {
                 <Tab value='2' label="Clothes management" />
                 </TabList>
               </Box>
-              <TabPanel value="1">Add New Clothes</TabPanel>
+              <TabPanel value="1"><AddNewClothes/></TabPanel>
               <TabPanel value="2">Clothes management</TabPanel>
             </TabContext>
           </Box>
