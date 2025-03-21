@@ -9,6 +9,8 @@ import { banner } from './components/exports';
 import { AuthProvider } from 'react-oidc-context';
 import { userManager, onSigninCallback } from './config';
 import ManagerPanel from './components/managerPanel/ManagerPanel';
+import { Provider } from 'react-redux';
+import store from './redux/Store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,6 +18,7 @@ const root = ReactDOM.createRoot(
 root.render(
   
     <AuthProvider userManager={userManager} onSigninCallback={onSigninCallback}>
+      <Provider store={store}>
       <BrowserRouter>
         <Navbar />
         <img src={banner} className="banner" />
@@ -24,6 +27,8 @@ root.render(
           <Route path="/managerPanel" element={<ManagerPanel />} />
         </Routes>
       </BrowserRouter>
+      </Provider>
+      
     </AuthProvider>
   
 );
