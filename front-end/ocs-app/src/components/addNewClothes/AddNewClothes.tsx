@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, FormControlLabel, FormGroup, FormLabel, InputAdornment, InputLabel, MenuItem, Radio, RadioGroup, Select, SelectChangeEvent, Step, StepLabel, Stepper, Typography } from "@mui/material";
+import { Box, Button, FormControl, FormControlLabel, FormGroup, FormLabel, InputAdornment, InputLabel, MenuItem, Radio, RadioGroup, Select, SelectChangeEvent, Step, StepLabel, Stepper, Typography, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import Grid from '@mui/material/Grid2';
 import { useDispatch, useSelector } from "react-redux";
@@ -8,8 +8,11 @@ import TextFieldStyle from '../styledElements/TextFieldStyle';
 import useImageUpload from '../../services/useImageUpload';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import {defaultImg} from '../exports';
+import './addNewClothes.css';
 import useSaveClothes from "../../services/useSaveClothes";
 function AddNewClothes() {
+    const matches800px=useMediaQuery('(min-width:900px)');
+    const matches570px=useMediaQuery('(min-width:570px)');
     const steps = ['Clothes details','Clothes photos'];
     const [activeStep, setActiveStep] = useState(0);
     const [skipped, setSkipped] = useState(new Set<number>());
@@ -135,7 +138,7 @@ function AddNewClothes() {
            {
             activeStep === 0 && (
             <Grid container spacing={4} marginTop="40px">
-              <Grid size={4}>
+              <Grid size={{md:4,sm:6,xs:12}}>
               <FormControl sx={{ width: "100%" }}>
               <InputLabel id="demo-simple-select-label">Type</InputLabel>
               <Select
@@ -157,7 +160,7 @@ function AddNewClothes() {
                     </Select>
               </FormControl>
               </Grid>
-              <Grid size={4}>
+              <Grid size={{md:4,sm:6,xs:12}}>
               <FormControl sx={{ width: "100%" }}>
               <InputLabel id="demo-simple-select-label">Brand</InputLabel>
                     <Select
@@ -178,7 +181,7 @@ function AddNewClothes() {
                     </Select>
               </FormControl>
               </Grid>
-              <Grid size={4}>
+              <Grid size={{md:4,sm:6,xs:12}}>
                   <TextFieldStyle
                     label="Price"
                     width="100%"
@@ -193,7 +196,7 @@ function AddNewClothes() {
                     }}
                   ></TextFieldStyle>
                 </Grid>
-                <Grid size={4}>
+                <Grid size={{md:4,sm:6,xs:12}}>
                 <FormControl sx={{ width: "100%" }}>
                 <InputLabel id="demo-simple-select-label">Color</InputLabel>
                 <Select
@@ -216,7 +219,7 @@ function AddNewClothes() {
                     </Select>
                 </FormControl>
                 </Grid>
-                <Grid size={4}>
+                <Grid size={{md:4,sm:6,xs:12}}>
                   <FormControl sx={{ width: "100%" }}>
                   <InputLabel id="demo-simple-select-label">Size</InputLabel>
                   <Select
@@ -285,20 +288,26 @@ function AddNewClothes() {
                     </RadioGroup>
                   </FormControl>
                 </Grid>
+                <Grid size={{md:4,sm:6,xs:12}}>
                 <Button variant="outlined" onClick={() => handleNext()}>
                     Next
                 </Button>
+                </Grid>
+                
             </Grid>
             )}
             {
               activeStep === 1 && (
-                <Grid container columnSpacing={2} marginTop="20px">
-                  <Grid container columnSpacing={2} rowSpacing={2} size={3} >
+                <Grid container columnSpacing={2} direction={matches800px ? "row" : "column"} alignItems={!matches800px ? "center" : "initial"} marginTop="20px">
+                  <Grid container columnSpacing={2} rowSpacing={2} size={{xs:9,sm:6,md:4,lg:3}} >
                 <Grid size={6}>
-                  <Button variant="contained" sx={{width:"100%"}} size="small" component="label">
-                        Upload
-                        <input hidden accept="image/*" onChange={(e)=>imageUpload.uploadImage(e)} type="file" />
-                      </Button>
+                
+                <Button variant="contained" sx={{width:"100%"}} size="small" component="label">
+                Upload
+                <input hidden accept="image/*" onChange={(e)=>imageUpload.uploadImage(e)} type="file" />
+                </Button>
+                
+                  
                   
                   </Grid>
                   <Grid size={6}>
@@ -308,21 +317,21 @@ function AddNewClothes() {
                     <img src={imageUploadSelector.uploadedImge === "" ? defaultImg : imageUploadSelector.uploadedImge} style={{ width: "100%",height:"250px"}}/>
                   </Grid>
                   
-                  
+                  {/* sx={{backgroundColor:"white",minHeight:"290px", height:!matches570px ? "700px" :"290px",borderRadius:"10px"}} */}
                 </Grid>
-                <Grid container size={6} sx={{backgroundColor:"white",height:"290px",borderRadius:"10px"}} justifyContent={'center'}>
-                <FormControl>
-                <FormGroup style={{flexDirection:"row",marginTop:"50px"}}>
+                <Grid container spacing={2} size={{xs:11,sm:12,md:8,lg:8}} sx={{justifyContent:"center",padding:matches570px ? "auto" :"20px",flexDirection:matches570px ? "row" :"column",alignItems:"center",backgroundColor:"white"}}>
+                {/* <FormControl > */}
+                {/* <FormGroup style={{flexDirection:matches570px ? "row" :"column",marginTop:"50px",backgroundColor:"white",width:"500px",minHeight:"250px"}}> */}
                      {
                      ImgElmntAttrArray.map((imgData, index) => {
                       return (
                         
-                         <div id={index.toString()} style={hideFirstImg(index)} key={index}>
+                         <div className="selectedImgsDiv" id={index.toString()} style={hideFirstImg(index)} key={index}>
                          
                          <div>
-                         <img style={{borderRadius:"8px",width:imgData.width, height:imgData.height}} src={imgData.src} />
+                         <img style={{width:matches570px ? "160px" : "180px"}} src={imgData.src} />
                          </div>
-                         <div style={{marginTop:"-10px",display:"grid", justifyContent:"center",justifyItems:"center",backgroundColor:"white",borderRadius:"8px"}}>
+                         <div>
                          <Button id={imgData.id} onClick={(e:any)=>imageUpload.removeImage(index,e.currentTarget.id)} style={{width:"10px"}} type="button" endIcon={<DeleteForeverIcon />}></Button>
                          </div>
                         </div>
@@ -331,14 +340,14 @@ function AddNewClothes() {
                       
                     })
                     }
-               </FormGroup>
-              </FormControl>
+               {/* </FormGroup> */}
+              {/* </FormControl> */}
              </Grid>
-             <Grid container size={5} >
-                  <Grid size={6}>
+             <Grid container size={12} rowSpacing={2} justifyContent={"space-between"} marginTop="20px">
+                  <Grid >
                   <Button variant='outlined' onClick={() => handleBack()}>Back</Button>
                 </Grid>
-                <Grid size={6}>
+                <Grid >
                   <Button variant='contained' onClick={saveClothes.saveClothesFunc}>Save this Clothes</Button>
                 </Grid>
             </Grid>
