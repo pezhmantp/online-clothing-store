@@ -13,5 +13,5 @@ public class ClothesDto {
     private Long price;
     private String color;
     private String gender;
-    private String size;
+    private Integer size;
 }

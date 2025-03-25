@@ -17,4 +17,8 @@ public class Size {
     private Long sizeId;
     @Column(name = "size")
     private Integer size;
+
+    public Size(Integer size) {
+        this.size = size;
+    }
 }

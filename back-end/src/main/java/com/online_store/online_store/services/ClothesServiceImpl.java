@@ -2,11 +2,15 @@ package com.online_store.online_store.services;
 
 import com.online_store.online_store.dtos.ClothesDto;
 import com.online_store.online_store.models.Clothes;
+import com.online_store.online_store.models.Size;
 import com.online_store.online_store.repositories.ClothesRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ClothesServiceImpl implements ClothesService{
@@ -46,14 +50,23 @@ public class ClothesServiceImpl implements ClothesService{
         }
 
     }
+
+    @Override
+    public List<Clothes> getAllClothes() {
+        return clothesRepository.findAll();
+    }
+
     private Clothes mapClothesDtoToClothes(ClothesDto clothesDto)
     {
+        List<Size> sizes=new ArrayList<>();
+        sizes.add(new Size((Integer) clothesDto.getSize()));
         Clothes clothes=new Clothes();
         clothes.setClothesType(clothesDto.getClothesType());
         clothes.setBrand(clothesDto.getBrand());
         clothes.setGender(clothesDto.getGender());
         clothes.setColor(clothesDto.getColor());
         clothes.setPrice(clothesDto.getPrice());
+        clothes.setSizes(sizes);
 //        clothes.setMaterial(clothesDto.getMaterial());
         return clothes;
     }

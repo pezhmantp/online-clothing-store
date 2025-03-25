@@ -1,0 +1,22 @@
+type Clothes{
+    clothesId: ID
+    clothesType: String
+    brand: String
+    price: Float
+    color: String
+    gender: String
+    sizes: [Size]
+    images: [Image]
+}
+type Size{
+    sizeId: ID
+    size: Int
+}
+type Image{
+    id: ID
+    name: String
+    description: String
+}
+type Query{
+    getAllClothes:[Clothes]
+}
