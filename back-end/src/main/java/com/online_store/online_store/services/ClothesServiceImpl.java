@@ -24,8 +24,9 @@ public class ClothesServiceImpl implements ClothesService{
         }
         catch (Exception e){
             log.error(e.getMessage());
-            return 0L;
+
         }
+        return 0L;
     }
     @Override
     public Long saveClothes(Clothes clothes) {
@@ -35,9 +36,24 @@ public class ClothesServiceImpl implements ClothesService{
         }
         catch (Exception e){
             log.error(e.getMessage());
-            return 0L;
+
         }
+        return 0L;
     }
+
+    @Override
+    public Boolean deleteClothes(Long clothesId) {
+        try {
+           clothesRepository.deleteById(clothesId);
+           return true;
+        }
+        catch (Exception e)
+        {
+            log.error(e.getMessage());
+        }
+        return false;
+    }
+
     @Override
     public Clothes findClothes(Long clothesId) {
         try {
@@ -46,9 +62,9 @@ public class ClothesServiceImpl implements ClothesService{
         }
         catch (Exception e){
             log.error(e.getMessage());
-            return  null;
-        }
 
+        }
+        return  null;
     }
 
     @Override

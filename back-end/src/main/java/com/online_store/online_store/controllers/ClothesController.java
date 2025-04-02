@@ -24,4 +24,17 @@ public class ClothesController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @DeleteMapping("/{clothesId}")
+    public ResponseEntity<?> delete(@PathVariable Long clothesId){
+
+            Boolean isDeleted= clothesService.deleteClothes(clothesId);
+            if(isDeleted)
+            {
+                return new ResponseEntity<>(true, HttpStatus.OK);
+            }
+            else {
+                return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+    }
 }

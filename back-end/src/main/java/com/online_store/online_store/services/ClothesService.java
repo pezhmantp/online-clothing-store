@@ -8,6 +8,7 @@ import java.util.List;
 public interface ClothesService {
     Long saveClothes(ClothesDto clothesDto);
     Long saveClothes(Clothes clothes);
+    Boolean deleteClothes(Long clothesId);
     Clothes findClothes(Long clothesId);
     List<Clothes> getAllClothes();
 }
