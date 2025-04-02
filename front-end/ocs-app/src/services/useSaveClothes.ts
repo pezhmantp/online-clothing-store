@@ -5,7 +5,8 @@ import { useState } from "react";
 import { useAuth } from "react-oidc-context";
 import { AppDispatch } from "../redux/Store";
 import { updateDisblAprvImgBtn, updateImgElmntAttr, updateTempImge, updateUploadedImge } from "../redux/slices/UploadImageSlice";
-import { updateClothesDetails } from "../redux/slices/ClothesDetailsSlice";
+import { updateClothesDetails } from "../redux/slices/ClothesSlice";
+import { toast } from "react-toastify";
 
 const save_images_url = process.env.REACT_APP_SAVE_IMAGES_URL ?? "";
 const save_clothes_url = process.env.REACT_APP_SAVE_CLOTHES_URL ?? "";
@@ -13,7 +14,7 @@ var imageUrls:any[]=[];
 
 const useSaveClothes=()=>{
     const dispatch=useDispatch<AppDispatch>();
-    const clothesDetailsSelector=useSelector((state:any) => state.clothesDetails);
+    const clothesDetailsSelector=useSelector((state:any) => state.clothes.clothesDetails);
     const ImgElmntAttrSelector:any[]=useSelector((state:any) => state.uploadImg.imgElmntAttr);
     const newArray = [...ImgElmntAttrSelector];
     const imageUpload = useImageUpload();
@@ -22,28 +23,21 @@ const useSaveClothes=()=>{
 
     function saveClothesFunc(){
         var clothesDetails={
-            clothesType: clothesDetailsSelector.clothesDetails.clothesType,
-            brand:clothesDetailsSelector.clothesDetails.clothesBrand,
-            price:clothesDetailsSelector.clothesDetails.clothesPrice,
-            color:clothesDetailsSelector.clothesDetails.clothesColor,
-            gender:clothesDetailsSelector.clothesDetails.clothesGender,
-            size:clothesDetailsSelector.clothesDetails.clothesSize
+            clothesType: clothesDetailsSelector.clothesType,
+            brand:clothesDetailsSelector.clothesBrand,
+            price:clothesDetailsSelector.clothesPrice,
+            color:clothesDetailsSelector.clothesColor,
+            gender:clothesDetailsSelector.clothesGender,
+            size:clothesDetailsSelector.clothesSize
         }
         axios.post(save_clothes_url, clothesDetails,).then((resp) => {
-            // setResetForm(true);
-             // alert(resp.data);
-             // setClothedId(resp.data);
-           
           if(map.size > 0){
          uploadImage(resp.data);
          }
+         clothesSavedSuccessfully();
          
-         // setTimeout(() => {
-         //   props.setTabValue('1');
-         // }, 2000);
-         
-        // setResetForm(false);
          }).catch((err) => console.log(err));
+         
     }
     function convertMaptoArray(){
       
@@ -63,27 +57,31 @@ const useSaveClothes=()=>{
           'Content-Type': 'multipart/form-data'
         }
       }).then(()=>{
-
-        var clothesDetails={
-            clothesType: "",
-            clothesBrand: "",
-            clothesColor: "",
-            clothesSize: "",
-            clothesGender: "",
-            clothesPrice: ""
-        }
-        dispatch(updateClothesDetails(clothesDetails));
-        imageUrls = [];
-        imageUpload.clearMap();
-        dispatch(updateTempImge(""));
-        dispatch(updateUploadedImge(""));
-        dispatch(updateDisblAprvImgBtn(true));
-        var data;
-        data = [...newArray];
-        data.splice(0);
-        dispatch(updateImgElmntAttr(data));
-        alert("Clothes saved successfully");
+        clothesSavedSuccessfully();
+        
+        
       }).catch((err) => {console.log("err : " + err)});
+    }
+
+    function clothesSavedSuccessfully() {
+      var clothesDetails = {
+        clothesType: "",
+        clothesBrand: "",
+        clothesColor: "",
+        clothesSize: "",
+        clothesGender: "",
+        clothesPrice: "",
+      };
+      dispatch(updateClothesDetails(clothesDetails));
+      imageUrls = [];
+      imageUpload.clearMap();
+      dispatch(updateTempImge(""));
+      dispatch(updateUploadedImge(""));
+      dispatch(updateDisblAprvImgBtn(true));
+      var data;
+      data = [...newArray];
+      data.splice(0);
+      dispatch(updateImgElmntAttr(data));
     }
     return {saveClothesFunc}
 }

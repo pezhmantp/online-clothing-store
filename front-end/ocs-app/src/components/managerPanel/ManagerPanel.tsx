@@ -3,6 +3,7 @@ import { Box, Tab } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { hasAuthParams, useAuth } from "react-oidc-context";
 import AddNewClothes from '../addNewClothes/AddNewClothes';
+import ClothesManagement from '../clothesManagement/ClothesManagement';
 
 function ManagerPanel() {
     const auth = useAuth();
@@ -32,7 +33,7 @@ useEffect(() => {
                 </TabList>
               </Box>
               <TabPanel value="1"><AddNewClothes/></TabPanel>
-              <TabPanel value="2">Clothes management</TabPanel>
+              <TabPanel value="2"><ClothesManagement/></TabPanel>
             </TabContext>
           </Box>
           )

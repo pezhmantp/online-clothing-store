@@ -3,20 +3,22 @@ import { useState } from "react";
 import Grid from '@mui/material/Grid2';
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/Store";
-import { updateClothesDetails } from "../../redux/slices/ClothesDetailsSlice";
+import { updateClothesDetails } from "../../redux/slices/ClothesSlice";
 import TextFieldStyle from '../styledElements/TextFieldStyle';
 import useImageUpload from '../../services/useImageUpload';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import {defaultImg} from '../exports';
 import './addNewClothes.css';
 import useSaveClothes from "../../services/useSaveClothes";
+import { toast, ToastContainer } from "react-toastify";
+
 function AddNewClothes() {
     const matches800px=useMediaQuery('(min-width:900px)');
     const matches570px=useMediaQuery('(min-width:570px)');
     const steps = ['Clothes details','Clothes photos'];
     const [activeStep, setActiveStep] = useState(0);
     const [skipped, setSkipped] = useState(new Set<number>());
-    const clothesDetails=useSelector((state:any) => state.clothesDetails.clothesDetails);
+    const clothesDetails=useSelector((state:any) => state.clothes.clothesDetails);
     const imageUploadSelector=useSelector((state:any) => state.uploadImg);
     const ImgElmntAttrSelector:any[]=useSelector((state:any) => state.uploadImg.imgElmntAttr);
     const ImgElmntAttrArray = [...ImgElmntAttrSelector];
@@ -39,6 +41,10 @@ function AddNewClothes() {
         setSkipped(newSkipped);
       };
     
+      const saveClothesHandler = () =>{
+        saveClothes.saveClothesFunc();
+        toast("Clothes saved successfully!")
+      }
       const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
       };
@@ -348,7 +354,7 @@ function AddNewClothes() {
                   <Button variant='outlined' onClick={() => handleBack()}>Back</Button>
                 </Grid>
                 <Grid >
-                  <Button variant='contained' onClick={saveClothes.saveClothesFunc}>Save this Clothes</Button>
+                  <Button variant='contained' onClick={saveClothesHandler}>Save this Clothes</Button>
                 </Grid>
             </Grid>
             </Grid>
@@ -356,6 +362,17 @@ function AddNewClothes() {
             }
           </>
         )}
+        <ToastContainer
+          position="bottom-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </Box>
     );
 }

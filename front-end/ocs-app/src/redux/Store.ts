@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import uploadImageReducer from './slices/UploadImageSlice';
-import clothesDetailsReducer from './slices/ClothesDetailsSlice';
+import clothesReducer from './slices/ClothesSlice';
 
 const store = configureStore({
     reducer:{
         uploadImg: uploadImageReducer,
-        clothesDetails: clothesDetailsReducer
+        clothes: clothesReducer
     }
 })
 export type AppDispatch = typeof store.dispatch

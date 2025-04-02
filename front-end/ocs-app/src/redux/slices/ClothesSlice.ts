@@ -8,18 +8,22 @@ const initialState:any ={
         clothesSize: "",
         clothesGender: "",
         clothesPrice: ""
-    }
+    },
+    allClothes:[]
 }
 
-const clothesDetailsSlice=createSlice({
-    name:"clothesDetails",
+const clothesSlice=createSlice({
+    name:"clothes",
     initialState,
     reducers:{
         updateClothesDetails(state,action){
             state.clothesDetails=action.payload
+        },
+        updateAllClothes(state,action){
+            state.allClothes = action.payload;
         }
     }
 })
 
-export const{updateClothesDetails}=clothesDetailsSlice.actions;
-export default clothesDetailsSlice.reducer
+export const{updateClothesDetails,updateAllClothes}=clothesSlice.actions;
+export default clothesSlice.reducer
