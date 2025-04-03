@@ -4,18 +4,26 @@ import { useEffect, useState } from 'react';
 import { hasAuthParams, useAuth } from "react-oidc-context";
 import AddNewClothes from '../addNewClothes/AddNewClothes';
 import ClothesManagement from '../clothesManagement/ClothesManagement';
+import secureLocalStorage from 'react-secure-storage';
 
 function ManagerPanel() {
     const auth = useAuth();
+    
     const [hasTriedSignin, setHasTriedSignin] = useState(false);
     const [tabvalue, setTabvalue] = useState("1");
 useEffect(() => {
   if (!hasAuthParams() && !auth.isAuthenticated && !auth.activeNavigator && !auth.isLoading && !hasTriedSignin) {
+    secureLocalStorage.removeItem("access_token");
     auth.signinRedirect();
     setHasTriedSignin(true);
   }
+
+  var access_token=auth.user?.access_token ?? "";
+  console.log(access_token);
   
+  secureLocalStorage.setItem("access_token",access_token)
 }, [auth, hasTriedSignin]);
+
     const handleTabChanges = (
       event: React.SyntheticEvent,
       newValue: string

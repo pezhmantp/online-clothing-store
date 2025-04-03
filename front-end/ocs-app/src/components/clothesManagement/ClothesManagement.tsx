@@ -4,6 +4,8 @@ import { GetAllClothesDocument } from '../../gql/graphql';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import useDeleteClothes from '../../services/useDeleteClothes';
 import { toast, ToastContainer } from 'react-toastify';
+import { useAuth } from 'react-oidc-context';
+import secureLocalStorage from 'react-secure-storage';
 
 
 
@@ -11,7 +13,9 @@ function ClothesManagement() {
 
   const deleteClothes=useDeleteClothes();
   
-  const [fetchAllClothes,{ loading, data }] = useLazyQuery(GetAllClothesDocument);
+  const [fetchAllClothes,{ loading, data }] = useLazyQuery(GetAllClothesDocument,{
+    context: { headers: { authorization: `Bearer ${secureLocalStorage.getItem("access_token")}` } }
+});
   useEffect(()=>{
     fetchAllClothes();
   },[])
@@ -38,7 +42,7 @@ function ClothesManagement() {
 
   return (
    <>
-   { !(data?.getAllClothes?.length == undefined || data?.getAllClothes?.length == 0) && (
+   { !(data?.getAllClothes?.length === undefined || data?.getAllClothes?.length === 0) && (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 400 }} aria-label="a dense table">
         <TableHead>
@@ -73,7 +77,7 @@ function ClothesManagement() {
     </TableContainer>
   )}
   {
-    (data?.getAllClothes?.length == undefined || data?.getAllClothes?.length == 0) && (<div style={{margin:"center"}}>No data here!</div>)
+    (data?.getAllClothes?.length === undefined || data?.getAllClothes?.length === 0) && (<div style={{margin:"center"}}>No data here!</div>)
   }
   <ToastContainer
           position="bottom-center"

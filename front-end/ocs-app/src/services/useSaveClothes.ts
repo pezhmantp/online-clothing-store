@@ -7,6 +7,7 @@ import { AppDispatch } from "../redux/Store";
 import { updateDisblAprvImgBtn, updateImgElmntAttr, updateTempImge, updateUploadedImge } from "../redux/slices/UploadImageSlice";
 import { updateClothesDetails } from "../redux/slices/ClothesSlice";
 import { toast } from "react-toastify";
+import secureLocalStorage from "react-secure-storage";
 
 const save_images_url = process.env.REACT_APP_SAVE_IMAGES_URL ?? "";
 const save_clothes_url = process.env.REACT_APP_SAVE_CLOTHES_URL ?? "";
@@ -30,7 +31,11 @@ const useSaveClothes=()=>{
             gender:clothesDetailsSelector.clothesGender,
             size:clothesDetailsSelector.clothesSize
         }
-        axios.post(save_clothes_url, clothesDetails,).then((resp) => {
+        axios.post(save_clothes_url, clothesDetails,{
+          headers:{
+            'Authorization': 'Bearer ' + secureLocalStorage.getItem("access_token"),
+          }
+        }).then((resp) => {
           if(map.size > 0){
          uploadImage(resp.data);
          }
@@ -53,7 +58,7 @@ const useSaveClothes=()=>{
       });
       axios.post(save_images_url,formData,{
         headers:{
-          // 'Authorization': 'Bearer ' + secureLocalStorage.getItem("id_token"),
+          'Authorization': 'Bearer ' + secureLocalStorage.getItem("access_token"),
           'Content-Type': 'multipart/form-data'
         }
       }).then(()=>{
