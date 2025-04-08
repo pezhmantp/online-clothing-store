@@ -17,6 +17,12 @@ type Image{
     name: String
     description: String
 }
+type ClothesResponse{
+    clothes: Clothes,
+    imageUris: [String],
+}
+
 type Query{
-    getAllClothes:[Clothes]
+    getAllClothes:[ClothesResponse],
+    getClothesById(clothesId: Float):ClothesResponse
 }

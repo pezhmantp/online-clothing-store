@@ -1,13 +1,16 @@
 package com.online_store.online_store.services;
 
 import com.online_store.online_store.dtos.ClothesDto;
+import com.online_store.online_store.dtos.ClothesResponse;
 import com.online_store.online_store.models.Clothes;
+import com.online_store.online_store.models.Image;
 import com.online_store.online_store.models.Size;
 import com.online_store.online_store.repositories.ClothesRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,14 +67,65 @@ public class ClothesServiceImpl implements ClothesService{
             log.error(e.getMessage());
 
         }
-        return  null;
+        return null;
     }
 
     @Override
-    public List<Clothes> getAllClothes() {
-        return clothesRepository.findAll();
+    public List<ClothesResponse> getAllClothes() {
+        List<Clothes> clothesList= clothesRepository.findAll();
+        return mapToResponseDTO(clothesList);
     }
+//    @Override
+//    public List<Clothes> getAllClothes() {
+//        List<Clothes> clothesList= clothesRepository.findAll();
+//        return clothesList;
+//    }
+    private String generateImageUri(String imageName)
+    {
+        return ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/image/").path(imageName).toUriString();
+    }
+    private List<ClothesResponse> mapToResponseDTO(List<Clothes> clothes)
+    {
+        List<ClothesResponse> clothesResponses=new ArrayList<>();
+        clothes.forEach(s->{
+            List<String> imageUris=new ArrayList<>();
+            s.getImages().forEach(image -> {
+                imageUris.add(generateImageUri(image.getName()));
+            });
+            ClothesResponse clothesResponse=new ClothesResponse();
+            clothesResponse.setImageUris(imageUris);
+            clothesResponse.setClothes(s);
+            clothesResponses.add(clothesResponse);
+        });
+        return clothesResponses;
+    }
+    @Override
+    public ClothesResponse findClothesWithImages(Long clothesId) {
+        Clothes clothes = clothesRepository.findByClothesId(clothesId);
+        if(clothes == null)
+        {
+            return null;
+        }
+        List<Image> images = clothes.getImages();
+        List<String> imageUris=new ArrayList<>();
+        //System.out.println("########################### photosNames.size: " + photos.size());
+        if(images.size() > 0)
+        {
 
+            images.forEach(p -> imageUris.add(
+                    ServletUriComponentsBuilder.fromCurrentContextPath()
+                            .path("/image/").path(p.getName()).toUriString()
+            ));
+
+            //  System.out.println("fetchImg2 : " + images);
+            ClothesResponse clothesResponse=new ClothesResponse();
+            clothesResponse.setClothes(clothes);
+            clothesResponse.setImageUris(imageUris);
+            return clothesResponse;
+        }
+        return null;
+    }
     private Clothes mapClothesDtoToClothes(ClothesDto clothesDto)
     {
         List<Size> sizes=new ArrayList<>();
