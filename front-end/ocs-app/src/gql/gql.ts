@@ -14,10 +14,12 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
-    "\n  query GetAllClothes{\n    getAllClothes {\n        clothesId\n        clothesType\n        brand\n        price\n        color\n        gender\n    }\n  }\n": typeof types.GetAllClothesDocument,
+    "\n  query GetAllClothes {\n    getAllClothes {\n        imageUris\n        clothes {\n            clothesId\n            clothesType\n            brand\n            price\n            color\n            gender\n        }\n    }\n}\n": typeof types.GetAllClothesDocument,
+    "\nquery GetClothesById($clothesId: Float) {\n    getClothesById(clothesId: $clothesId) {\n        imageUris\n        clothes {\n            clothesId\n            clothesType\n            brand\n            price\n            color\n            gender\n        }\n    }\n}\n": typeof types.GetClothesByIdDocument,
 };
 const documents: Documents = {
-    "\n  query GetAllClothes{\n    getAllClothes {\n        clothesId\n        clothesType\n        brand\n        price\n        color\n        gender\n    }\n  }\n": types.GetAllClothesDocument,
+    "\n  query GetAllClothes {\n    getAllClothes {\n        imageUris\n        clothes {\n            clothesId\n            clothesType\n            brand\n            price\n            color\n            gender\n        }\n    }\n}\n": types.GetAllClothesDocument,
+    "\nquery GetClothesById($clothesId: Float) {\n    getClothesById(clothesId: $clothesId) {\n        imageUris\n        clothes {\n            clothesId\n            clothesType\n            brand\n            price\n            color\n            gender\n        }\n    }\n}\n": types.GetClothesByIdDocument,
 };
 
 /**
@@ -37,7 +39,11 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query GetAllClothes{\n    getAllClothes {\n        clothesId\n        clothesType\n        brand\n        price\n        color\n        gender\n    }\n  }\n"): (typeof documents)["\n  query GetAllClothes{\n    getAllClothes {\n        clothesId\n        clothesType\n        brand\n        price\n        color\n        gender\n    }\n  }\n"];
+export function graphql(source: "\n  query GetAllClothes {\n    getAllClothes {\n        imageUris\n        clothes {\n            clothesId\n            clothesType\n            brand\n            price\n            color\n            gender\n        }\n    }\n}\n"): (typeof documents)["\n  query GetAllClothes {\n    getAllClothes {\n        imageUris\n        clothes {\n            clothesId\n            clothesType\n            brand\n            price\n            color\n            gender\n        }\n    }\n}\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\nquery GetClothesById($clothesId: Float) {\n    getClothesById(clothesId: $clothesId) {\n        imageUris\n        clothes {\n            clothesId\n            clothesType\n            brand\n            price\n            color\n            gender\n        }\n    }\n}\n"): (typeof documents)["\nquery GetClothesById($clothesId: Float) {\n    getClothesById(clothesId: $clothesId) {\n        imageUris\n        clothes {\n            clothesId\n            clothesType\n            brand\n            price\n            color\n            gender\n        }\n    }\n}\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

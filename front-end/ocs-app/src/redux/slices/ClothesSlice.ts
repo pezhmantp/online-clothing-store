@@ -9,7 +9,8 @@ const initialState:any ={
         clothesGender: "",
         clothesPrice: ""
     },
-    allClothes:[]
+    allClothes:[],
+    selectedClothes:""
 }
 
 const clothesSlice=createSlice({
@@ -21,9 +22,12 @@ const clothesSlice=createSlice({
         },
         updateAllClothes(state,action){
             state.allClothes = action.payload;
+        },
+        updateSelectedClothes(state,action){
+            state.selectedClothes = action.payload;
         }
     }
 })
 
-export const{updateClothesDetails,updateAllClothes}=clothesSlice.actions;
+export const{updateClothesDetails,updateAllClothes,updateSelectedClothes}=clothesSlice.actions;
 export default clothesSlice.reducer

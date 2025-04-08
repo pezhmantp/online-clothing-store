@@ -21,7 +21,8 @@ function AddNewClothes() {
     const clothesDetails=useSelector((state:any) => state.clothes.clothesDetails);
     const imageUploadSelector=useSelector((state:any) => state.uploadImg);
     const ImgElmntAttrSelector:any[]=useSelector((state:any) => state.uploadImg.imgElmntAttr);
-    const ImgElmntAttrArray = [...ImgElmntAttrSelector];
+    // var ImgElmntAttrArray = ImgElmntAttrSelector.concat();
+    var ImgElmntAttrArray = [...ImgElmntAttrSelector];
     const imageUpload = useImageUpload();
     const saveClothes =useSaveClothes();
     const dispatch=useDispatch<AppDispatch>();
@@ -91,6 +92,7 @@ function AddNewClothes() {
       dispatch(updateClothesDetails(data));
       };
       function hideFirstImg(index:any):any {
+        
         if(index === 0)
         {
           return {marginRight:"3px",paddingBottom:"20px",
@@ -180,10 +182,10 @@ function AddNewClothes() {
                       <MenuItem disabled value="">
                         <em>choose a brand</em>
                       </MenuItem>
-                      <MenuItem value="gucci">Gucci</MenuItem>
-                      <MenuItem value="lacoste">Lacoste</MenuItem>
-                      <MenuItem value="prada">Prada</MenuItem>
-                      <MenuItem value="versace">Versace</MenuItem>
+                      <MenuItem value="Gucci">Gucci</MenuItem>
+                      <MenuItem value="Lacoste">Lacoste</MenuItem>
+                      <MenuItem value="Prada">Prada</MenuItem>
+                      <MenuItem value="Versace">Versace</MenuItem>
                     </Select>
               </FormControl>
               </Grid>

@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useAuth } from "react-oidc-context";
 import { AppDispatch } from "../redux/Store";
-import { updateDisblAprvImgBtn, updateImgElmntAttr, updateTempImge, updateUploadedImge } from "../redux/slices/UploadImageSlice";
+import { clearImgElmntAttr, updateDisblAprvImgBtn, updateImgElmntAttr, updateTempImge, updateUploadedImge } from "../redux/slices/UploadImageSlice";
 import { updateClothesDetails } from "../redux/slices/ClothesSlice";
 import { toast } from "react-toastify";
 import secureLocalStorage from "react-secure-storage";
@@ -39,7 +39,9 @@ const useSaveClothes=()=>{
           if(map.size > 0){
          uploadImage(resp.data);
          }
-         clothesSavedSuccessfully();
+         else{
+          clothesSavedSuccessfully();
+         }
          
          }).catch((err) => console.log(err));
          
@@ -86,7 +88,8 @@ const useSaveClothes=()=>{
       var data;
       data = [...newArray];
       data.splice(0);
-      dispatch(updateImgElmntAttr(data));
+      // dispatch(updateImgElmntAttr(data));
+      dispatch(clearImgElmntAttr());
     }
     return {saveClothesFunc}
 }

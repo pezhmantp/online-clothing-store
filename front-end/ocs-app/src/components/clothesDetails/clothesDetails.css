@@ -1,0 +1,143 @@
+.shoe-details-main-div{
+    display: grid;
+    grid-template-columns: 3fr 5fr;
+    margin: auto;
+    margin-top: 50px;
+    width: 70%;
+    background-color: rgb(243, 243, 243);
+    border-radius: 12px;
+}
+.shoe-details-info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 30px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+.shoe-details-info .first {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    gap: 5px;
+}
+.shoe-details-info .first .shoe-title,.type{
+    font-family: "IranSansWebBold";
+    color: white;
+    
+    font-size: 23px;
+}
+.shoe-details-info .first .model{
+    color: rgb(3, 105, 195);
+    font-family: "Rushfordclean";
+    font-size: 30px;
+}
+.shoe-details-info .second{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 5px;
+}
+.shoe-details-info .second .price{
+    font-family: "F_sahar";
+    font-size: 28px;
+    color: white;
+    background-color: rgb(3, 105, 195);
+    border-radius: 15px;;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+.prce-title2{
+    font-family: "IranSansWebBold";
+    font-size: 16px;
+    color: rgb(121, 121, 121);
+}
+.toman{
+    font-family: "IranSansWebBold";
+    font-size: 16px;
+    color: rgb(121, 121, 121);
+}
+.shoe-details-info .third .colorDiv{
+    width: 40px;
+    height: 40px;
+    border: solid;
+    border-width: 7px;
+    border-radius: 15px;
+    border-color: rgb(255, 255, 255);
+}
+.shoe-details-info .third .color-title2{
+    font-family: "IranSansWebBold";
+    font-size: 16px;
+    color: rgb(121, 121, 121);
+}
+.shoe-details-info .third{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 20px;
+}
+.colorMainDiv{
+    display: inline-flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    align-items: center;
+}
+.shoeQtyMain{
+    display: inline-flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    align-items: center;
+}
+.shoeQtyMain span{
+    font-family: "IranSansWebBold";
+    font-size: 16px;
+    color: rgb(121, 121, 121);
+}
+.shoeSex{
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.shoeSex .sex-title2{
+    font-family: "IranSansWebBold";
+    font-size: 21px;
+    color: rgb(0, 102, 255);
+}
+.Toastify__toast{
+    border: 1px solid #EB5757;
+    border-radius: 50px !important;
+    background: #FAE1E2 !important;
+    width: 260px;
+    height: 40px;
+  }
+  .Toastify__toast-body{
+    font-family: "IRANYekanWebRegular";
+    font-size: 12px;
+    text-align: center;
+    color: #d10404;
+  }
+
+  .titles{
+    font-size: 17px;
+    color: #740286;
+    font-family: 'VanillaExtractRegular';
+  }
+  .values{
+    font-size: 17px;
+    color: #b027a2;
+    font-family: 'VanillaExtractRegular';
+  }
+  .colorDiv{
+    width: 30px;
+    height: 30px;
+    border: solid;
+    border-width: 7px;
+    border-radius: 15px;
+    border-color: rgb(255, 255, 255);
+}
+
+
+
+
+
+

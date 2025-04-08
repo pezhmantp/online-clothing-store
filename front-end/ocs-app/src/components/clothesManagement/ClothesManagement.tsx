@@ -62,14 +62,14 @@ function ClothesManagement() {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell align="left">
-                {row.clothesId}
+                {row.clothes.clothesId}
               </TableCell>
-              <TableCell align="left">{row.clothesType}</TableCell>
-              <TableCell align="left">{row.brand}</TableCell>
-              <TableCell align="left">{row.price}</TableCell>
-              <TableCell align="left">{row.color}</TableCell>
-              <TableCell align="left">{row.gender}</TableCell>
-              <TableCell align="left"><Button onClick={()=>handleDelete(row.clothesId)} sx={{color:"red"}}>Delete</Button></TableCell>
+              <TableCell align="left">{row.clothes.clothesType}</TableCell>
+              <TableCell align="left">{row.clothes.brand}</TableCell>
+              <TableCell align="left">{row.clothes.price}</TableCell>
+              <TableCell align="left">{row.clothes.color}</TableCell>
+              <TableCell align="left">{row.clothes.gender}</TableCell>
+              <TableCell align="left"><Button onClick={()=>handleDelete(row.clothes.clothesId)} sx={{color:"red"}}>Delete</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -1,0 +1,82 @@
+.clothesCard{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 0;
+}
+.card :hover{
+    cursor: pointer;
+}
+/* .clothesCard img{
+    width: 98%;
+    height: 98%;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    padding: 25px;
+} */
+.clothesInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(109, 2, 102, 0.5);
+}
+.brand{
+    display: inline-flex;
+    flex-direction: row-reverse;
+    gap: 7px;
+    margin-top: -5px;
+}
+.brand-title{
+    
+    color: rgb(76, 1, 71);
+    font-size: 18px;
+}
+.brand-name{
+    /* margin-top: -1px; */
+    font-weight: bold;
+    color: rgb(76, 1, 71);
+    font-size: 18px;
+    font-family:sans-serif;
+}
+/* .clothesCard .clothesInfo .price{
+    display: flex;
+    margin-top: -8px;
+    align-items: center;
+    gap: 7px;
+} */
+.price-title{
+    color: rgb(243, 240, 240);
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.price-value{
+    
+    color: rgb(243, 240, 240);
+    font-size: 19px;
+}
+@media screen and (max-width:530px){
+    .clothesCard{
+        position: relative;
+        width: 180px;
+        height: 180px;
+        z-index: 0;
+    }
+}
+@media screen and (max-width:384px){
+    .clothesCard{
+        position: relative;
+        width: 300px;
+        height: 300px;
+        z-index: 0;
+    }
+}
+
+.price{
+    display: flex;
+    margin-top: -2px;
+    align-items: center;
+    gap: 3px;
+}

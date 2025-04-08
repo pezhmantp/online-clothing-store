@@ -30,9 +30,19 @@ const uploadImageSlice=createSlice({
         updateImgElmntAttr(state,action){
             state.imgElmntAttr=action.payload;
         },
+        clearImgElmntAttr(state){
+            state.imgElmntAttr=[{
+                id:"",   
+                src: null,
+                width:0 ,
+                height:0,
+                visibility: false
+               }
+            ];
+        }
     }
 })
 
-export const{updateUploadedImge,updateTempImge,updateDisblAprvImgBtn,updateImgElmntAttr}=uploadImageSlice.actions;
+export const{updateUploadedImge,updateTempImge,updateDisblAprvImgBtn,updateImgElmntAttr,clearImgElmntAttr}=uploadImageSlice.actions;
 
 export default uploadImageSlice.reducer

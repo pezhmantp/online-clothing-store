@@ -1,0 +1,35 @@
+schema {
+  query: Query
+}
+
+type Clothes {
+  brand: String
+  clothesId: ID
+  clothesType: String
+  color: String
+  gender: String
+  images: [Image]
+  price: Float
+  sizes: [Size]
+}
+
+type Image {
+  description: String
+  id: ID
+  name: String
+}
+
+"""
+type ClothesResponse{
+    clothes: Clothes,
+    imageUris: [String],
+}
+"""
+type Query {
+  getAllClothes: [Clothes]
+}
+
+type Size {
+  size: Int
+  sizeId: ID
+}
