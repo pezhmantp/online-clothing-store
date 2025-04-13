@@ -31,6 +31,25 @@ query GetClothesById($clothesId: Float) {
 }
 `;
 
+const q3=gql`
+query GetFilteredResult($brandsStr:[String],$minPrice: Float,$maxPrice: Float,$size: Int,$color: String,$clothesType:String,$gender:String) {
+    getFilteredResult(brandsStr:$brandsStr,minPrice: $minPrice,maxPrice: $maxPrice,size: $size,color: $color,clothesType: $clothesType,gender: $gender) {
+        imageUris
+        clothes {
+            clothesId
+            clothesType
+            brand
+            price
+            color
+            gender
+        }
+    }
+}
+`;
+
+
+
+
 
 
 

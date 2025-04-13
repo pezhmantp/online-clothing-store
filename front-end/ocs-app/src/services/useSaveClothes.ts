@@ -37,9 +37,11 @@ const useSaveClothes=()=>{
           }
         }).then((resp) => {
           if(map.size > 0){
+            alert("yes"+map.size)
          uploadImage(resp.data);
          }
          else{
+          alert("no" + map.size)
           clothesSavedSuccessfully();
          }
          
@@ -88,7 +90,6 @@ const useSaveClothes=()=>{
       var data;
       data = [...newArray];
       data.splice(0);
-      // dispatch(updateImgElmntAttr(data));
       dispatch(clearImgElmntAttr());
     }
     return {saveClothesFunc}

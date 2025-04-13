@@ -1,0 +1,7 @@
+
+.brand-menu1 .btn{
+    font-size : clamp(12px, 3vw, 14px);
+    font-family: 'SourceSansPro-Bold';
+    color: rgb(75, 2, 71);
+    background-color: rgb(255, 243, 240);
+}

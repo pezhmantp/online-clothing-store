@@ -21,7 +21,6 @@ function AddNewClothes() {
     const clothesDetails=useSelector((state:any) => state.clothes.clothesDetails);
     const imageUploadSelector=useSelector((state:any) => state.uploadImg);
     const ImgElmntAttrSelector:any[]=useSelector((state:any) => state.uploadImg.imgElmntAttr);
-    // var ImgElmntAttrArray = ImgElmntAttrSelector.concat();
     var ImgElmntAttrArray = [...ImgElmntAttrSelector];
     const imageUpload = useImageUpload();
     const saveClothes =useSaveClothes();
@@ -160,11 +159,11 @@ function AddNewClothes() {
                       <MenuItem disabled value="">
                         <em>choose a type</em>
                       </MenuItem>
-                      <MenuItem value="jacket">Jacket</MenuItem>
-                      <MenuItem value="jeans">Jeans</MenuItem>
-                      <MenuItem value="shirt">Shirt</MenuItem>
-                      <MenuItem value="dress">Dress</MenuItem>
-                      <MenuItem value="coat">Coat</MenuItem>
+                      <MenuItem value="Jacket">Jacket</MenuItem>
+                      <MenuItem value="Jeans">Jeans</MenuItem>
+                      <MenuItem value="Shirt">Shirt</MenuItem>
+                      <MenuItem value="Dress">Dress</MenuItem>
+                      <MenuItem value="Coat">Coat</MenuItem>
                     </Select>
               </FormControl>
               </Grid>
@@ -241,17 +240,13 @@ function AddNewClothes() {
                       <MenuItem disabled value="">
                         <em>choose a size</em>
                       </MenuItem>
-                      <MenuItem value="4">4</MenuItem>
-                      <MenuItem value="6">6</MenuItem>
-                      <MenuItem value="8">8</MenuItem>
+                      
                       <MenuItem value="10">10</MenuItem>
                       <MenuItem value="12">12</MenuItem>
                       <MenuItem value="14">14</MenuItem>
                       <MenuItem value="16">16</MenuItem>
                       <MenuItem value="18">18</MenuItem>
                       <MenuItem value="20">20</MenuItem>
-                      <MenuItem value="22">22</MenuItem>
-                      <MenuItem value="24">24</MenuItem>
                     </Select>
                   </FormControl>
                 </Grid>
@@ -314,9 +309,6 @@ function AddNewClothes() {
                 Upload
                 <input hidden accept="image/*" onChange={(e)=>imageUpload.uploadImage(e)} type="file" />
                 </Button>
-                
-                  
-                  
                   </Grid>
                   <Grid size={6}>
                   <Button disabled={imageUploadSelector.disblAprvImgBtn} sx={{width:"100%"}} onClick={imageUpload.approveImage} variant="contained" size="small" component="label" >Save</Button>
@@ -325,11 +317,9 @@ function AddNewClothes() {
                     <img src={imageUploadSelector.uploadedImge === "" ? defaultImg : imageUploadSelector.uploadedImge} style={{ width: "100%",height:"250px"}}/>
                   </Grid>
                   
-                  {/* sx={{backgroundColor:"white",minHeight:"290px", height:!matches570px ? "700px" :"290px",borderRadius:"10px"}} */}
                 </Grid>
                 <Grid container spacing={2} size={{xs:11,sm:12,md:8,lg:8}} sx={{justifyContent:"center",padding:matches570px ? "auto" :"20px",flexDirection:matches570px ? "row" :"column",alignItems:"center",backgroundColor:"white"}}>
-                {/* <FormControl > */}
-                {/* <FormGroup style={{flexDirection:matches570px ? "row" :"column",marginTop:"50px",backgroundColor:"white",width:"500px",minHeight:"250px"}}> */}
+
                      {
                      ImgElmntAttrArray.map((imgData, index) => {
                       return (
@@ -348,8 +338,7 @@ function AddNewClothes() {
                       
                     })
                     }
-               {/* </FormGroup> */}
-              {/* </FormControl> */}
+            
              </Grid>
              <Grid container size={12} rowSpacing={2} justifyContent={"space-between"} marginTop="20px">
                   <Grid >

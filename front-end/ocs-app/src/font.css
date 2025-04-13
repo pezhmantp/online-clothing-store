@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'VanillaExtractRegular';
-    src: local('VanillaExtractRegular'),
-     url('./font/VanillaExtractRegular.ttf') format('truetype');
+    font-family: 'SourceSansPro-Bold';
+    src: local('SourceSansPro-Bold'),
+     url('./font/SourceSansPro-Bold.ttf') format('truetype');
 }

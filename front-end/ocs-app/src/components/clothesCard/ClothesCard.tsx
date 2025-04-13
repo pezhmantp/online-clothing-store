@@ -13,22 +13,6 @@ function ClothesCard(prop:any) {
       nav("/clothesDetails");
   }
   return (
-    // <div className='clothesCard' >
-    //   <div className='clothesInfo'>
-    //     <div className='brand'>
-    //       <div className='brand-title'>برند</div>
-    //       <div className='brand-name'>{prop.brand}</div>
-    //     </div>
-    //     <div className='price'>
-    //       <div className='price-title'>تومان</div>
-    //       <div className='price-value'>{prop.price}</div>
-    //     </div>
-    //   </div>
-    //   {/* <img src={prop.img} id={prop.id} onClick={((e:any)=>{setSelectedShoeFunc(e);nav("/shoeDetails")})}/> */}
-    //   <img src={prop.img} id={prop.id} />
-    // </div>
-
-    
 
     <Card
       className="card"

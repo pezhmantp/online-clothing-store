@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import Navbar from './components/navbar/Navbar';
-import { banner } from './components/exports';
 import { AuthProvider } from 'react-oidc-context';
 import { userManager, onSigninCallback } from './config';
 import ManagerPanel from './components/managerPanel/ManagerPanel';
@@ -24,7 +23,6 @@ root.render(
       <ApolloProvider client={client}>
         <BrowserRouter>
           <Navbar />
-          <img src={banner} className="banner" />
           <Routes>
             <Route index element={<App />} />
             <Route path="/managerPanel" element={<ManagerPanel />} />

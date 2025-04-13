@@ -1,13 +1,27 @@
 .navbar{
     padding: 5px;
-    background-color: rgb(144, 0, 127);
+    background-color: rgb(113, 6, 106);
     width: 99%;
     height: 40px;
-    display: flex;
-    justify-content:space-between;
     border-radius: 8px;
 }
 .logo{
+    position: absolute;
     width: 120px;
     height: 80px;
+}
+.logo520px{
+    position: absolute;
+    width: 76px;
+    height: 62px;
+}
+.banner{
+    width: 380px;
+    height: 60px;
+    margin-left:120px;
+}
+.banner520px{
+    width: 240px;
+    height: 50px;
+    margin-left:75px;
 }

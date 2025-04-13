@@ -1,0 +1,22 @@
+.searchBarDiv{
+    width: 80%;
+    padding:7px;
+    display: flex;
+    justify-content: flex-start;
+    background-color: rgb(198, 124, 193);
+    margin: auto;
+    border-radius: 7px;
+    gap: 20px;
+    justify-self: start;
+}
+.searchBarDiv470px{
+    width: 95%;
+    padding:7px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(198, 124, 193);
+    margin: auto;
+    border-radius: 7px;
+    gap: 7px;
+    justify-self: start;
+}

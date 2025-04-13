@@ -1,0 +1,17 @@
+.radioDiv{
+    margin: auto;
+}
+/* .type-menu1{
+    text-align: center;
+} */
+.radioLbl{
+    font-size: 16px;
+    font-family: "IranSansWebBold";
+    color: rgb(120, 120, 122);
+}
+.type-menu1 .btn{
+    font-size : clamp(12px, 3vw, 14px);
+    font-family: 'SourceSansPro-Bold';
+    color: rgb(75, 2, 71);
+    background-color: aliceblue;
+}

@@ -22,6 +22,7 @@
     align-items: center;
     text-align: center;
     background-color: rgba(109, 2, 102, 0.5);
+    min-height: 50px;
 }
 .brand{
     display: inline-flex;
@@ -32,14 +33,14 @@
 .brand-title{
     
     color: rgb(76, 1, 71);
-    font-size: 18px;
+    font-size: clamp(15px, 3vw, 18px);
 }
 .brand-name{
     /* margin-top: -1px; */
     font-weight: bold;
     color: rgb(76, 1, 71);
-    font-size: 18px;
-    font-family:sans-serif;
+    font-size: clamp(17px, 3vw, 20px);
+    font-family: 'SourceSansPro-Bold';
 }
 /* .clothesCard .clothesInfo .price{
     display: flex;
@@ -49,15 +50,15 @@
 } */
 .price-title{
     color: rgb(243, 240, 240);
-    font-size: 18px;
+    font-size: clamp(15px, 3vw, 18px);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .price-value{
     
     color: rgb(243, 240, 240);
-    font-size: 19px;
+    font-size: clamp(16px, 3vw, 18px);
 }
-@media screen and (max-width:530px){
+/* @media screen and (max-width:530px){
     .clothesCard{
         position: relative;
         width: 180px;
@@ -72,7 +73,7 @@
         height: 300px;
         z-index: 0;
     }
-}
+} */
 
 .price{
     display: flex;
