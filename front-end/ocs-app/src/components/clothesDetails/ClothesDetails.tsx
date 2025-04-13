@@ -8,6 +8,7 @@ import WomanIcon from '@mui/icons-material/Face4';
 import './clothesDetails.css'
 import  Grid from '@mui/material/Grid2';
 import { useMediaQuery } from '@mui/material';
+import {defaultImg} from '../exports';
 
 var imgUris:any[]=[];
 function ClothesDetails() {
@@ -83,8 +84,13 @@ function ClothesDetails() {
         <Grid size={12}>
           {
           (()=>{
-            if(data?.getClothesById?.imageUris != null && data?.getClothesById?.imageUris?.length != undefined)
-            return(<img style={{width:"100%",height:"300px",borderRadius:"10px"}} src={currentImgToDisply === null ? data?.getClothesById?.imageUris[0] : currentImgToDisply}/>)
+            if(data?.getClothesById?.imageUris != null && data?.getClothesById?.imageUris?.length != undefined){
+              return(<img style={{width:"100%",height:"300px",borderRadius:"10px"}} src={currentImgToDisply === null ? data?.getClothesById?.imageUris[0] : currentImgToDisply}/>)
+            }
+            else{
+              return(<img style={{width:"100%",height:"300px",borderRadius:"10px"}} src={defaultImg}/>)
+            }
+            
           })()
         }
         </Grid>
