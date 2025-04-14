@@ -4,11 +4,14 @@ server:
 spring:
   application:
     name: OCS-Backend
-#  security:
-#    oauth2:
-#      resourceserver:
-#        jwt:
-#          jwk-set-uri: http://localhost:8079/realms/OCS-realm/protocol/openid-connect/certs
+  sql:
+    init:
+      mode: always
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8079/realms/OCS-realm/protocol/openid-connect/certs
   graphql:
     cors:
       allowed-origins: "*"

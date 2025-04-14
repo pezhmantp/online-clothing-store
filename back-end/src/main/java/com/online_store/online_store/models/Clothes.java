@@ -31,6 +31,6 @@ public class Clothes {
     @JoinColumn(name = "clothes_id")
     private List<Size> sizes;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "shoe_id")
+    @JoinColumn(name = "clothes_id")
     private List<Image> images;
 }

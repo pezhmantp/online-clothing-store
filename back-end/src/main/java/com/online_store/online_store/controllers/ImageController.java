@@ -11,6 +11,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -34,6 +35,7 @@ public class ImageController {
     private ImageService imageService;
     private List<Image> images = new ArrayList<>();
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping(consumes = "multipart/form-data")
     public ResponseEntity<?> addImage(@RequestParam("file1") MultipartFile[] file1, @RequestParam("clothesId") Long clothesId) {
         makeDirectory(imageDirectory);
@@ -63,6 +65,7 @@ public class ImageController {
             directory.mkdir();
         }
     }
+
     @GetMapping("{fileName}")
     public ResponseEntity<Resource> retrieveImage(@PathVariable("fileName") String fileName, HttpServletRequest request) throws IOException {
         Resource resource = imageService.retrieveImage(fileName);

@@ -16,9 +16,9 @@ public class Size {
     @Column(name = "size_id")
     private Long sizeId;
     @Column(name = "size")
-    private Integer size;
+    private Integer sizeNo;
 
     public Size(Integer size) {
-        this.size = size;
+        this.sizeNo = size;
     }
 }

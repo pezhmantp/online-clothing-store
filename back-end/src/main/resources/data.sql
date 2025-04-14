@@ -1,0 +1,45 @@
+INSERT INTO clothes_tbl (clothes_type,brand,price,color,gender) VALUES
+		('Jacket','Prada',100,'black','Men'),
+		('Jacket','Lacoste',150,'white','Men'),
+		('Jeans','Prada',180,'black','Men'),
+		('Jeans','Versace',300,'blue','Men'),
+		('Shirt','Versace',100,'blue','Men'),
+		('Shirt','Gucci',200,'brown','Men'),
+		('Dress','Gucci',250,'green','Women'),
+		('Dress','Lacoste',350,'blue','Women'),
+		('Coat','Gucci',250,'brown','Women');
+
+INSERT INTO image_tbl (name,description,clothes_id) VALUES
+		('jacket-A1.png','',1),
+		('jacket-A2.png','',1),
+		('jacket-B1.png','',2),
+		('jacket-B3.png','',2),
+		('jeans-A1.png','',3),
+		('jeans-A2.png','',3),
+		('jeans-B1.png','',4),
+		('jeans-B2.png','',4),
+		('jeans-B3.png','',4),
+		('shirt-A3.png','',5),
+		('shirt-A1.png','',5),
+		('shirt-A2.png','',5),
+		('shirt-B1.png','',6),
+		('shirt-B2.png','',6),
+		('shirt-B3.png','',6),
+		('dress-A1.png','',7),
+		('dress-A2.png','',7),
+		('dress-B1.png','',8),
+		('dress-B2.png','',8),
+		('coat-A1.png','',9),
+		('coat-A2.png','',9),
+		('coat-A3.png','',9);
+
+INSERT INTO size_tbl (size,clothes_id) VALUES
+		(12,1),
+		(14,2),
+		(16,3),
+		(10,4),
+		(10,5),
+		(12,6),
+		(18,7),
+		(20,8),
+		(20,9);

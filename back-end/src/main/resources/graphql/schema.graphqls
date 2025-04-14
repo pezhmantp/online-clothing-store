@@ -24,5 +24,6 @@ type ClothesResponse{
 
 type Query{
     getAllClothes:[ClothesResponse],
-    getClothesById(clothesId: Float):ClothesResponse
+    getClothesById(clothesId: Float):ClothesResponse,
+    getFilteredResult(brandsStr:[String],minPrice:Float,maxPrice:Float,size:Int,color:String,clothesType:String,gender:String):[ClothesResponse]!
 }
