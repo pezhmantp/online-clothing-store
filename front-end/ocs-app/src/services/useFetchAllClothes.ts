@@ -6,9 +6,10 @@ import { useSelector } from 'react-redux';
 
 export default function useFetchAllClothes() {
   
-  const {loading, data} = useQuery(GetAllClothesDocument,{
-  context: { headers: { authorization: `Bearer ${secureLocalStorage.getItem("access_token")}` } }
-});
+//   const {loading, data} = useQuery(GetAllClothesDocument,{
+//   context: { headers: { authorization: `Bearer ${secureLocalStorage.getItem("access_token")}` } }
+// });
+const {loading, data} = useQuery(GetAllClothesDocument);
 function getData()
 {
   return data;

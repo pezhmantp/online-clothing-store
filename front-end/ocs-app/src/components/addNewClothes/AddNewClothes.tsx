@@ -220,7 +220,7 @@ function AddNewClothes() {
                       <MenuItem value="blue">Blue</MenuItem>
                       <MenuItem value="brown">Brown</MenuItem>
                       <MenuItem value="black">Black</MenuItem>
-                      <MenuItem value="red">Red</MenuItem>
+                      <MenuItem value="white">white</MenuItem>
                       <MenuItem value="green">Green</MenuItem>
                       <MenuItem value="yelow">Yelow</MenuItem>
                     </Select>

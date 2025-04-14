@@ -17,7 +17,7 @@ function ClothesDetails() {
     const clothesId=useSelector((state:any) => state.clothes.selectedClothes);
     const {loading, data} = useQuery(GetClothesByIdDocument,{
         variables:{clothesId},
-      context: { headers: { authorization: `Bearer ${secureLocalStorage.getItem("access_token")}` } }
+      // context: { headers: { authorization: `Bearer ${secureLocalStorage.getItem("access_token")}` } }
     });
     const [currentImgToDisply,setCurrentImgToDisply] = useState<any>(null);
   const setCurrentImgToDisplyFunc =(e:any)=>{
@@ -33,7 +33,7 @@ function ClothesDetails() {
         case "gray" : return "rgb(116, 116, 116)";
         case "pink" : return "rgb(255, 86, 227)";
         case "green" : return "rgb(2, 203, 72)";
-        case "brown" : return "rgb(238, 89, 2)";
+        case "brown" : return "rgb(156, 92, 3)";
         case "yellow" : return "rgb(238, 234, 2)";
       }
      }

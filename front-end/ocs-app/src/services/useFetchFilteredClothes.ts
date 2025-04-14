@@ -18,13 +18,13 @@ export default function useFetchFilteredClothes () {
         clothesType: selector.type,
         gender: selector.gender
       },
-      context: {
-        headers: {
-          authorization: `Bearer ${secureLocalStorage.getItem(
-            "access_token"
-          )}`,
-        },
-      },
+      // context: {
+      //   headers: {
+      //     authorization: `Bearer ${secureLocalStorage.getItem(
+      //       "access_token"
+      //     )}`,
+      //   },
+      // },
     }
   );
 function getData()

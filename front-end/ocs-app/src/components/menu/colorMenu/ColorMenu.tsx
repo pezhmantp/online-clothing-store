@@ -67,7 +67,7 @@ function ColorMenu() {
             <div className='color-div' id='blue' onClick={((e:any)=>{getColor(e)})}></div>
             <div className='color-div' id='brown' onClick={((e:any)=>{getColor(e)})}></div>
             <div className='color-div' id='black' onClick={((e:any)=>{getColor(e)})}></div>
-            <div className='color-div' id='red' onClick={((e:any)=>{getColor(e)})}></div>
+            <div className='color-div' id='white' onClick={((e:any)=>{getColor(e)})}></div>
             <div className='color-div' id='green' onClick={((e:any)=>{getColor(e)})}></div>
             <div className='color-div' id='yelow' onClick={((e:any)=>{getColor(e)})}></div>
             
