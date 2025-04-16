@@ -6,6 +6,20 @@ services:
     command: sleep infinity
     ports:
       - "8079:8079"
+      - "3306:3306"
+      - "3000:3000"
+      - "8081:8081"
+
+  mysql-ocs-compose:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: sqlPass
+      MYSQL_USER: user
+      MYSQL_PASSWORD: sqlPass
+    volumes:
+      - mysql-data:/var/lib/clothesmysql
+    network_mode: "service:localhost"
+    restart: on-failure
 
   keycloak-ocs-compose:
     image: quay.io/keycloak/keycloak:24.0.3
@@ -20,3 +34,27 @@ services:
       - ./keycloak/import/:/opt/keycloak/data/import/
     restart: on-failure
 
+  backend-app-ocs-compose:
+    container_name: backend-app
+    build: ./back-end
+    depends_on:
+      - mysql-ocs-compose
+      - keycloak-ocs-compose
+    network_mode: "service:localhost"
+    restart: on-failure
+
+  react-app-ocs-compose:
+    container_name: react-app
+    build: ./front-end/ocs-app
+    depends_on:
+      - keycloak-ocs-compose
+      - backend-app-ocs-compose
+    stdin_open: true
+    tty: true
+    environment:
+      NODE_ENV: development
+    command: npm start
+    network_mode: "service:localhost"
+
+volumes:
+  mysql-data:
