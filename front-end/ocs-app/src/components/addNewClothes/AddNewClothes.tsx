@@ -222,7 +222,7 @@ function AddNewClothes() {
                       <MenuItem value="black">Black</MenuItem>
                       <MenuItem value="white">white</MenuItem>
                       <MenuItem value="green">Green</MenuItem>
-                      <MenuItem value="yelow">Yelow</MenuItem>
+                      <MenuItem value="yellow">Yellow</MenuItem>
                     </Select>
                 </FormControl>
                 </Grid>
