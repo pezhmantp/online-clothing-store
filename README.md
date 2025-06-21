@@ -1,7 +1,7 @@
 # Clothing Store Application
 
 # Introduction:
-This a clothing store application. User can manage the products and search the products based on search filters.
+This a clothing store application. User can manage the products and search the products and filter the retrieved result.
 
 # Technologies:
 Back-end: Spring boot, Java, Mysql, Keycloak
