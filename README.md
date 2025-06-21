@@ -5,4 +5,5 @@ This a clothing store application. User can manage the products and search the p
 
 # Technologies:
 Back-end: Spring boot, Java, Mysql, Keycloak
+
 Front-end: React, TypeScript, Redux, GraphQL, Material UI, Axios  
